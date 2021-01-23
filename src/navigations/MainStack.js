@@ -2,30 +2,19 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
-import LoginPage from '../screens/LoginPage';
-import RegisterPage from '../screens/RegisterPage';
-import TabNavigator from './TabNavigator';
+import SplashScreen from '../screens/SplashScreen';
+import BottomTabs from './BottomTabs';
 
-const RootStack = createStackNavigator();
 
-const RootStackContainer = () => {
+const MainStack = createStackNavigator();
+
+const MainStackContainer = () => {
     return (
-        <RootStack.Navigator initialRouteName="Login">
-            <RootStack.Screen name="Login" component={LoginPage}
-                options={({ navigation, route }) => ({
-                    headerShown: false
-                })} />
-            <RootStack.Screen name="Register" component={RegisterPage}
-                options={({ navigation, route }) => ({
-                    headerShown: false
-                })} />
-            <RootStack.Screen name="Home" component={TabNavigator}
-                options={({ navigation, route }) => ({
-                    headerShown: false,
-                })}
-            />
-        </RootStack.Navigator>
+        <MainStack.Navigator initialRouteName="TabNav">
+            <MainStack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
+            <MainStack.Screen name="TabNav" component={BottomTabs} options={{ headerShown: false }} />
+        </MainStack.Navigator>
     );
 };
 
-export default RootStackContainer;
+export default MainStackContainer;
