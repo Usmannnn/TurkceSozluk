@@ -1,12 +1,15 @@
 import React from 'react'
-import { Image, StyleSheet, Dimensions, View, Text } from 'react-native'
+import { Image, StyleSheet, ImageBackground, Dimensions, View, Text } from 'react-native'
 import Logo from '../components/Logo'
 
 const { width, height } = Dimensions.get('screen')
 
 const SplashScreen = () => {
     return (
-        <View style={styles.container}>
+        <ImageBackground 
+            style={styles.container}
+            source={require('../../assets/bg.png')}
+        >
             <View style={{
                 flex: 3,
                 justifyContent: 'center',
@@ -16,7 +19,7 @@ const SplashScreen = () => {
             <View style={{ flex: 1 }}>
                 <Text style={styles.text}>Türkçe Sözlük</Text>
             </View>
-        </View>
+        </ImageBackground>
     )
 }
 
@@ -24,16 +27,16 @@ const SplashScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'red',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#E11E3C'
     },
     logo: {
         width: width * 0.48,
         height: height * 0.1
     },
     text: {
-        fontFamily: 'SF Pro Text',
+        // fontFamily: 'SF Pro Text',
         fontWeight: '700',
         fontSize: 14,
         lineHeight: 40,

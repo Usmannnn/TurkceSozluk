@@ -7,7 +7,7 @@ const Logo = ({ width, height }) => {
             <Image
                 source={require('../../assets/logo-white.png')}
                 style={{ width, height }}
-                resizeMode={'center'}
+                resizeMode={'contain'}
             />
     )
 }
