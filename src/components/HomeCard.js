@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         color: '#0A151F',
         fontWeight: '700',
         fontSize: 18,
-        fontFamily: 'SF Pro Text',
+        // fontFamily: 'SF Pro Text',
         lineHeight: 26,
         marginBottom: 5
     },

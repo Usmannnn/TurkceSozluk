@@ -14,16 +14,16 @@ const Search = () => {
             <View style={styles.head}>
                 <ImageBackground
                     source={require('../../assets/bg.png')}
-                    style={{...StyleSheet.absoluteFillObject, justifyContent: 'center', alignItems: 'center'}}
+                    style={{ ...StyleSheet.absoluteFillObject, justifyContent: 'center', alignItems: 'center' }}
                 >
                     <Logo width={width * 0.4} height={height * 0.1} />
                 </ImageBackground>
             </View>
-                <SearchBar icon={'search'} placeholder={"Türkçe Sözlük'te Ara"}/>
+            <SearchBar icon={'search'} placeholder={"Türkçe Sözlük'te Ara"} />
             <View style={styles.tail}>
                 <HomeCard title={'Bir deyim'} word={'on para'} description={'çok az (para)'} />
                 <HomeCard title={'Bir deyim'} word={'on para lorelajsflasjf'} description={'çok az (para)safsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'} />
-            
+
             </View>
         </View>
     )
