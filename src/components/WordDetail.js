@@ -6,7 +6,7 @@ import { Feather, FontAwesome } from 'react-native-vector-icons';
 
 const { width, height } = Dimensions.get('screen')
 
-const WordDetail = ({ word, origination }) => {
+const WordDetail = ({ word, origination, action }) => {
 
     const [data, setData] = useState([
         {
@@ -59,7 +59,6 @@ const WordDetail = ({ word, origination }) => {
         )
     }
 
-
     return (
         <View style={styles.container}>
             <View style={styles.head}>
@@ -72,7 +71,10 @@ const WordDetail = ({ word, origination }) => {
                         <TouchableOpacity style={styles.icons}>
                             <Feather name={'volume-2'} size={25} color={'black'} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.icons}>
+                        <TouchableOpacity 
+                            style={styles.icons}
+                            onPress={() => action()}
+                        >
                             <Feather name={'bookmark'} size={25} color={'black'} />
                         </TouchableOpacity>
                     </View>

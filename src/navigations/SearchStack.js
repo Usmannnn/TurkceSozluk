@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Header from '../components/Header';
 import Search from '../screens/Search';
 import Detail from '../screens/Detail';
-import Header from '../components/Header';
 
 const SearchStack = createStackNavigator();
 

@@ -1,5 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+
+import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
@@ -7,10 +9,12 @@ import { AntDesign, Entypo } from 'react-native-vector-icons';
 
 
 const Header = ({ left, right, title }) => {
+
+    const navigation = useNavigation()
     return (
         <SafeAreaView style={styles.container}>
             <TouchableOpacity
-                onPress={() => alert('asd')}
+                onPress={() => navigation.goBack()}
             >
                 <AntDesign name={left} size={25} color={'black'} />
             </TouchableOpacity>

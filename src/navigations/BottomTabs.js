@@ -6,8 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { MaterialIcons } from 'react-native-vector-icons';
 
+import Header from '../components/Header';
 import History from '../screens/History';
-// import Search from '../screens/Search';
 import SearchStack from './SearchStack'
 import Favorite from '../screens/Favorite';
 
@@ -19,6 +19,7 @@ const TabContainer = () => {
 		<Tab.Navigator
 			initialRouteName={'Search'}
 			screenOptions={({ route }) => ({
+				
 				tabBarIcon: ({ focused, color, size }) => {
 
 					if (route.name === 'History') {
@@ -48,7 +49,8 @@ const TabContainer = () => {
 							</View>
 						)
 					}
-				},
+				}
+
 			})}
 
 			tabBarOptions={{
