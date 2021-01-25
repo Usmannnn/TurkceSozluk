@@ -11,10 +11,10 @@ const SearchStackContainer = () => {
     return (
         <SearchStack.Navigator
             initialRouteName="Search"
-            screenOptions={() => ({
+            screenOptions={({route}) => ({
                 header: () => <Header
                     left={'left'}
-                    title={'Hearas'}
+                    title={route.name}
                     right={'dots-three-horizontal'}
                 />
             })}
