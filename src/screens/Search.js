@@ -23,7 +23,6 @@ const Search = () => {
             <View style={styles.tail}>
                 <HomeCard title={'Bir deyim'} word={'on para'} description={'çok az (para)'} />
                 <HomeCard title={'Bir deyim'} word={'on para lorelajsflasjf'} description={'çok az (para)safsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'} />
-
             </View>
         </View>
     )

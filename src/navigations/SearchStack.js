@@ -20,7 +20,7 @@ const SearchStackContainer = () => {
             })}
         >
             <SearchStack.Screen name="Search" component={Search} options={() => ({ headerShown: false })} />
-            <SearchStack.Screen name="Detail" component={Detail} />
+            <SearchStack.Screen name="Detail" component={Detail} options={() => ({ headerTitle: 'Detaylar' })}/>
         </SearchStack.Navigator>
     );
 };

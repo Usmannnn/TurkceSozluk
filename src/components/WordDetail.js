@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 
-import { Feather, FontAwesome } from 'react-native-vector-icons';
+import Favorite from './Favorite';
+import HandSign from './HandSign';
+import Volume from './Volume';
 
 const { width, height } = Dimensions.get('screen')
 
@@ -68,20 +70,10 @@ const WordDetail = ({ word, origination, action }) => {
                 </View>
                 <View style={styles.actionContainer}>
                     <View style={styles.iconContainer}>
-                        <TouchableOpacity style={styles.icons}>
-                            <Feather name={'volume-2'} size={25} color={'black'} />
-                        </TouchableOpacity>
-                        <TouchableOpacity 
-                            style={styles.icons}
-                            onPress={() => action()}
-                        >
-                            <Feather name={'bookmark'} size={25} color={'black'} />
-                        </TouchableOpacity>
+                        <Volume />
+                        <Favorite />
                     </View>
-                    <TouchableOpacity style={styles.languange}>
-                        <FontAwesome name="hand-o-up" size={25} color="black" />
-                        <Text style={{ fontWeight: '700', fontSize: 14, lineHeight: 20 }}>Türk İşaret Dili</Text>
-                    </TouchableOpacity>
+                    <HandSign />
                 </View>
             </View>
             <FlatList
@@ -120,23 +112,6 @@ const styles = StyleSheet.create({
         borderStyle: 'dashed',
         borderColor: '#758291',
         marginBottom: 20
-    },
-    icons: {
-        backgroundColor: 'white',
-        borderRadius: width * 0.26,
-        height: width * 0.13,
-        width: width * 0.13,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    languange: {
-        backgroundColor: 'white',
-        borderRadius: 999,
-        height: height * 0.075,
-        width: width * 0.5,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center'
     },
     actionContainer: {
         marginVertical: 25,
