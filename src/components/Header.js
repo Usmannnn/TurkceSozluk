@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        marginVertical: 10,
     },
     title: {
         fontWeight: 'bold',

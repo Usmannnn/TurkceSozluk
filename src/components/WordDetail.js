@@ -98,6 +98,7 @@ const WordDetail = ({ word, origination, action }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginHorizontal: 20,
     },
     iconContainer: {
         flexDirection: 'row',
