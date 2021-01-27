@@ -1,2 +1,3 @@
 custom tab view
 animated alert with redux -- for every icon diffrent same action diffrent content 
+keyboard dismiss must effected searcbar
