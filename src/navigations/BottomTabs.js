@@ -3,10 +3,8 @@ import { View } from 'react-native';
 
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import { MaterialIcons } from 'react-native-vector-icons';
 
-import Header from '../components/Header';
 import History from '../screens/History';
 import SearchStack from './SearchStack'
 import Favorite from '../screens/Favorite';

@@ -9,7 +9,7 @@ const BeginBarWidth = width * 0.9
 const EndBarWidth = width * 0.7
 const CancelWidth = width * 0.2
 
-const SearchBar = ({ icon, placeholder }) => {
+const SearchBar = ({ icon, placeholder, onFocusBar }) => {
 
     const [text, setText] = useState(null)
     const [cancel, setCancel] = useState(null)
@@ -17,16 +17,44 @@ const SearchBar = ({ icon, placeholder }) => {
     const barWidth = useRef(new Animated.Value(BeginBarWidth)).current;
     const cancelWidth = useRef(new Animated.Value(0)).current;
 
+    useEffect(() => {
+        if(onFocusBar) {
+
+            Keyboard.addListener('keyboardDidShow', () => onFocusBar(true))
+            Keyboard.addListener('keyboardDidHide', 
+                () => {
+                    onFocusBar(false)
+                    stopFocus()  
+                })
+
+            return () => {
+                Keyboard.removeListener('keyboardDidShow', () => onFocusBar(true))
+                Keyboard.removeListener('keyboardDidHide', 
+                () => {
+                    onFocusBar(false)
+                    stopFocus()  
+                })
+            }
+        } else {
+            Keyboard.addListener('keyboardDidHide', () => stopFocus())
+
+            return () => {
+                Keyboard.removeListener('keyboardDidHide', () => stopFocus())
+            }
+        }
+    })
+
+
     const startFocus = () => {
         Animated.parallel([
             Animated.timing(barWidth, {
                 toValue: EndBarWidth,
-                duration: 350,
+                duration: 200,
                 useNativeDriver: false
             }),
             Animated.timing(cancelWidth, {
                 toValue: CancelWidth,
-                duration: 350,
+                duration: 200,
                 useNativeDriver: false
             })
         ]).start(() => setCancel('Vazgeç'))
@@ -34,6 +62,8 @@ const SearchBar = ({ icon, placeholder }) => {
 
     const stopFocus = () => {
         setCancel(null)
+        Keyboard.dismiss()
+
         Animated.parallel([
             Animated.timing(barWidth, {
                 toValue: BeginBarWidth,
@@ -45,13 +75,8 @@ const SearchBar = ({ icon, placeholder }) => {
                 duration: 350,
                 useNativeDriver: false
             })
-        ]).start(Keyboard.dismiss())
+        ]).start()
     }
-
-    useEffect(() => {
-        BackHandler.addEventListener('hardwareBackPress', () => alert('as'))
-    },[])
-    
 
     return (
         <View style={styles.container}>
@@ -76,7 +101,12 @@ const SearchBar = ({ icon, placeholder }) => {
                     width: cancelWidth
                 }]}
             >
-                <TouchableOpacity style={{justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%'}}onPress={() => stopFocus()}>
+                <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}
+                    onPress={() => {
+                        Keyboard.dismiss()
+                        stopFocus()
+                    }}
+                >
                     <Text style={{ fontWeight: '600', fontSize: 14, lineHeight: 22 }}>{cancel}</Text>
                 </TouchableOpacity>
             </Animated.View>

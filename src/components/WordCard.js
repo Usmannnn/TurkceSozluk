@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native'
 
 import { AntDesign } from 'react-native-vector-icons';
@@ -6,16 +6,23 @@ import { AntDesign } from 'react-native-vector-icons';
 
 const { width, height } = Dimensions.get('screen')
 
-const WordCard = ({ text }) => {
+const WordCard = ({ text, borderColor, icon }) => {
+
     return (
-        <TouchableOpacity style={styles.container}>
-            <View style={{flex: 4 }}>
-                <Text style={{ fontWeight: '700', fontSize: 16, lineHeight: 26, marginRight: 10 }}>{'texttexttextexttexttextexttexttextexttexttextexttexttextexttexttextexttexttex ttextt exttexttextte'}</Text>
+        <View
+            style={[styles.container, {
+                borderWidth: 1,
+                borderColor: borderColor ? 'red' : 'transparent'
+            }]}
+
+        >
+            <View style={{ flex: 4 }}>
+                <Text style={{ fontWeight: '700', fontSize: 16, lineHeight: 26, marginRight: 10 }}>{text}</Text>
             </View>
-            <View style={{flex: 1, alignItems: 'flex-end'}}>
-                <AntDesign name={'right'} size={20} color={'#E11E3C'} />
+            <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                <AntDesign name={icon ? 'checkcircle' : 'right'} size={20} color={'#E11E3C'} />
             </View>
-        </TouchableOpacity>
+        </View>
     )
 }
 
