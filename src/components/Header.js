@@ -31,7 +31,6 @@ const Header = ({ left, right, title }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: 75,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',

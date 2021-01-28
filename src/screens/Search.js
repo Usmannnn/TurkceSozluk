@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { StyleSheet, Dimensions, View, ImageBackground, Animated } from 'react-native'
+import { StyleSheet, Dimensions, View, ImageBackground, Animated, TouchableOpacity } from 'react-native'
 
 import Logo from '../components/Logo'
 import SearchBar from '../components/SearchBar'
 import HomeCard from '../components/HomeCard'
+import WordCard from '../components/WordCard'
+import SwipeModal from '../components/SwipeModal'
+
+import { Entypo } from 'react-native-vector-icons';
 
 const { width, height } = Dimensions.get('screen')
 
@@ -13,11 +17,12 @@ const nonFocusedHeight = height * 0.3
 const Search = () => {
 
     const [isFocusBar, setIsFocusBar] = useState(false)
+    const [isModalActive, setModalStatus] = useState(false)
     const barPosititon = useRef(new Animated.Value(nonFocusedHeight)).current;
 
     useEffect(() => {
 
-        if( isFocusBar ) {
+        if (isFocusBar) {
             Animated.timing(barPosititon, {
                 toValue: onFocusedHeight,
                 duration: 180,
@@ -33,7 +38,9 @@ const Search = () => {
 
     }, [isFocusBar])
 
-
+    const handleModal = () => {
+        setModalStatus(true)
+    }
 
     return (
         <View style={styles.container}>
@@ -50,15 +57,26 @@ const Search = () => {
                             alignItems: 'center'
                         }}
                     >
+                        <TouchableOpacity 
+                            style={{ alignSelf: 'flex-end', position: 'absolute', top: 20, right: 25}}
+                            onPress={() => handleModal()}
+                        >
+                            <Entypo name={'dots-three-horizontal'} size={20} color={'#000000'} />
+                        </TouchableOpacity>
                         <Logo width={width * 0.4} height={height * 0.1} />
                     </ImageBackground>
                 }
             </Animated.View>
             <SearchBar icon={'search'} placeholder={"Türkçe Sözlük'te Ara"} onFocusBar={status => setIsFocusBar(status)} />
-            <View style={styles.tail}>
-                <HomeCard title={'Bir deyim'} word={'on para'} description={'çok az (para)'} />
-                <HomeCard title={'Bir deyim'} word={'on para lorelajsflasjf'} description={'safssssssssssssssssssssssssssssssssssssssssssssssssssssss'} />
-            </View>
+            {
+                !isFocusBar ? <View style={styles.tail}>
+                    <HomeCard title={'Bir deyim'} word={'on para'} description={'çok az (para)'} />
+                    <HomeCard title={'Bir deyim'} word={'on para lorelajsflasjf'} description={'safssssssssssssssssssssssssssssssssssssssssssssssssssssss'} />
+                </View> : <WordCard text={'laşsfalisfşaif'} />
+            }
+            {
+                isModalActive ? <SwipeModal isVisible={isModalActive} action={status => setModalStatus(status)}/> : <View />
+            }
         </View>
     )
 }

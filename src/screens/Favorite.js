@@ -45,7 +45,7 @@ const History = () => {
     ])
 
     const [borderColor, setBorderColor] = useState(false)
-    const [icon, setIcon] = useState(false)
+    const [icon, setIcon] = useState('right')
 
     //data redux tan gelince tıklanan item datanın içindeki rengi değiştirecek
     const onLongPress = () => {
@@ -104,7 +104,6 @@ const History = () => {
 const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
-        marginHorizontal: 20
     }
 })
 

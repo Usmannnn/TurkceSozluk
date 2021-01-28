@@ -9,6 +9,8 @@ import WordCard from '../components/WordCard';
 const History = () => {
 
     const [data, setData] = useState([0])
+    const [icon, setIcon] = useState('right')
+
 
     const emptyScreen = () => {
         return (
@@ -32,8 +34,7 @@ const History = () => {
                     <NavigationBar />
                 </View>
                 <View style={styles.contentContainer}>
-                    <WordCard />
-                    <WordCard />
+                    <WordCard text={'işaskfsşaikfişk'} icon={icon}/>
                 </View>
             </>
         )
@@ -48,7 +49,6 @@ const History = () => {
 const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
-        marginHorizontal: 20
     }
 })
 

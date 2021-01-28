@@ -20,7 +20,7 @@ const WordCard = ({ text, borderColor, icon }) => {
                 <Text style={{ fontWeight: '700', fontSize: 16, lineHeight: 26, marginRight: 10 }}>{text}</Text>
             </View>
             <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                <AntDesign name={icon ? 'checkcircle' : 'right'} size={20} color={'#E11E3C'} />
+                <AntDesign name={icon} size={20} color={'#E11E3C'} />
             </View>
         </View>
     )
@@ -36,8 +36,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingVertical: height * 0.025,
-        paddingHorizontal: 15,
-        backgroundColor: 'white'
+        paddingHorizontal: 20,
+        backgroundColor: 'white',
+        marginHorizontal: 20
     }
 })
 
