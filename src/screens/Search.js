@@ -57,8 +57,8 @@ const Search = () => {
                             alignItems: 'center'
                         }}
                     >
-                        <TouchableOpacity 
-                            style={{ alignSelf: 'flex-end', position: 'absolute', top: 20, right: 25}}
+                        <TouchableOpacity
+                            style={{ width: 50, alignItems: 'flex-end', position: 'absolute', top: 20, right: 20, height: 20 }}
                             onPress={() => handleModal()}
                         >
                             <Entypo name={'dots-three-horizontal'} size={20} color={'#000000'} />
@@ -74,9 +74,7 @@ const Search = () => {
                     <HomeCard title={'Bir deyim'} word={'on para lorelajsflasjf'} description={'safssssssssssssssssssssssssssssssssssssssssssssssssssssss'} />
                 </View> : <WordCard text={'laşsfalisfşaif'} />
             }
-            {
-                isModalActive ? <SwipeModal isVisible={isModalActive} action={status => setModalStatus(status)}/> : <View />
-            }
+            <SwipeModal isVisible={isModalActive} action={status => setModalStatus(status)} />
         </View>
     )
 }

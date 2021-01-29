@@ -1,12 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View, Modal, Dimensions, ImageBackground, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Modal, Dimensions, ImageBackground, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import Logo from './Logo'
 
 
 const { width, height } = Dimensions.get('screen')
 
 const SwipeModal = ({ isVisible, action }) => {
-
 
     return (
         <Modal
@@ -16,14 +15,27 @@ const SwipeModal = ({ isVisible, action }) => {
             style={{ justifyContent: 'flex-end' }}
             onRequestClose={() => action(false)}
         >
-            <View style={{ flex: 1 }} />
+            <TouchableWithoutFeedback
+                onPress={() => action(false)} >
+                <View style={{ flex: 1 }} />
+            </TouchableWithoutFeedback>
             <View style={styles.container}>
                 <View style={styles.head}>
                     <ImageBackground
                         source={require('../../assets/bg.png')}
                         style={{ ...StyleSheet.absoluteFill, backgroundColor: 'red' }}
                     >
-                        <View style={{ marginVertical: 10, alignSelf: 'center', width: '25%', height: 5, backgroundColor: '#B41830' }} />
+                        <TouchableOpacity
+                            onPress={() => action(false)}
+                            style={{
+                                marginVertical: 10,
+                                alignSelf: 'center',
+                                width: '25%',
+                                height: 7,
+                                borderRadius: 4,
+                                backgroundColor: '#B41830'
+                            }}
+                        ></TouchableOpacity>
                         <View style={{ alignItems: 'center' }}>
                             <Logo width={100} height={100} />
                             <View style={{ alignItems: 'center' }}>
@@ -36,14 +48,15 @@ const SwipeModal = ({ isVisible, action }) => {
                 <View style={styles.tail}>
                     <TouchableOpacity
                         style={styles.button}
+                        onPress={() => alert('as')}
                     >
-                        <Text style={{fontWeight: '700', fontSize: 16, lineHeight: 18}}>Hakkında</Text>
+                        <Text style={{ fontWeight: '700', fontSize: 16, lineHeight: 18 }}>Hakkında</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
                         style={styles.button}
                     >
-                        <Text style={{fontWeight: '700', fontSize: 16, lineHeight: 18}}>İletişim</Text>
+                        <Text style={{ fontWeight: '700', fontSize: 16, lineHeight: 18 }}>İletişim</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -55,7 +68,7 @@ export default SwipeModal
 
 const styles = StyleSheet.create({
     container: {
-        height: height * 0.57,
+        // height: height * 0.57,
         marginHorizontal: 2,
         marginVertical: 2,
     },
