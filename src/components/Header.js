@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AntDesign, Entypo } from 'react-native-vector-icons';
 
 
-const Header = ({ left, right, title }) => {
+const Header = ({ left, right, title, size }) => {
 
     const navigation = useNavigation()
     return (
@@ -16,13 +16,13 @@ const Header = ({ left, right, title }) => {
             <TouchableOpacity
                 onPress={() => navigation.goBack()}
             >
-                <AntDesign name={left} size={25} color={'black'} />
+                <AntDesign name={left} size={size} color={'black'} />
             </TouchableOpacity>
             <Text style={styles.title}>{title}</Text>
             <TouchableOpacity
                 onPress={() => alert('asd')}
             >
-                <Entypo name={right} size={25} color={'black'} />
+                <Entypo name={right} size={size} color={'black'} />
             </TouchableOpacity>
         </SafeAreaView>
     )
@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginHorizontal: 20,
-        marginVertical: 10,
+        // marginHorizontal: 20,
+        // marginVertical: 10,
     },
     title: {
         fontWeight: 'bold',

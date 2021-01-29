@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
 import IconResponse from '../components/IconResponse'
 import NavigationBar from '../components/NavigationBar'
 
@@ -19,9 +18,11 @@ const Detail = () => {
     return (
         <View style={styles.container}>
             <SearchBar icon={'search'} placeholder={"Güncel Türkçe Sözlük'te Ara"} />
-            <NavigationBar />
-            <WordDetail word={'Kalem'} origination={'Arapça kalem'} action={handleFavorite} />
-            <IconResponse icon={'bookmark'} text={'Favorilerinize Eklendi'} action={status}/>
+            <View style={{ marginHorizontal: 20, marginTop: -20 }}>
+                <NavigationBar />
+            </View>            
+            <WordDetail word={'Kalem'} origination={'Arapça kalem'} action={() => handleFavorite()} />
+            <IconResponse icon={'bookmark'} text={'Favorilerinize Eklendi'} action={status} />
         </View>
     )
 }

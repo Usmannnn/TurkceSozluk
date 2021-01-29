@@ -15,8 +15,8 @@ const History = () => {
     const emptyScreen = () => {
         return (
             <>
-                <View>
-                    <Header left={'left'} title={'Geçmiş'} right={'dots-three-horizontal'} />
+                <View style={{margin: 20}}>
+                    <Header size={25} left={'left'} title={'Geçmiş'} right={'dots-three-horizontal'} />
                 </View>
                 <View style={{ ...StyleSheet.absoluteFill, justifyContent: 'center', alignItems: 'center' }}>
                     <MaterialIcons name={'history'} size={50} color={'#758291'} />
@@ -29,8 +29,8 @@ const History = () => {
     const historyItem = () => {
         return (
             <>
-                <View>
-                    <Header left={'left'} title={'Geçmiş'} right={'dots-three-horizontal'} />
+                <View style={{margin: 20}}>
+                    <Header size={25} left={'left'} title={'Geçmiş'} right={'dots-three-horizontal'} />
                     <NavigationBar />
                 </View>
                 <View style={styles.contentContainer}>

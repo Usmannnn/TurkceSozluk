@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
     navigation: {
         backgroundColor: 'gray',
         height: 50,
-        marginBottom: 30,
-        marginHorizontal: 20,
+        marginVertical: 15,
     }
 })
 

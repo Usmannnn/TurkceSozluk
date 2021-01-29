@@ -11,20 +11,22 @@ const IconResponse = ({ icon, text, action }) => {
     
     //until redux entegration
     useEffect(() => {
-        Animated.timing(position, {
-            toValue: 25,
-            timing: 100,
-            useNativeDriver: false
-        }).start(() => {
-            setInterval(() => {
-                Animated.timing(position, {
-                    toValue: -100,
-                    timing: 3000,
-                    useNativeDriver: false
-                }).start()
-            }, 1000)
-        })
-    }, [action == true])
+        if (!action) {
+            Animated.timing(position, {
+                toValue: 25,
+                timing: 100,
+                useNativeDriver: false
+            }).start(() => {
+                setInterval(() => {
+                    Animated.timing(position, {
+                        toValue: -100,
+                        timing: 3000,
+                        useNativeDriver: false
+                    }).start()
+                }, 1000)
+            })
+        }
+    }, [action])
 
     return (
         <Animated.View

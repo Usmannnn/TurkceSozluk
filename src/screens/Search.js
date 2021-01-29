@@ -63,7 +63,7 @@ const Search = () => {
                         >
                             <Entypo name={'dots-three-horizontal'} size={20} color={'#000000'} />
                         </TouchableOpacity>
-                        <Logo width={width * 0.4} height={height * 0.1} />
+                        <Logo width={width * 0.4} height={height * 0.1} color={'white'} />
                     </ImageBackground>
                 }
             </Animated.View>
