@@ -13,7 +13,7 @@ const ModalStackContainer = () => {
         <ModalStack.Navigator
             initialRouteName="Index"
             screenOptions={({route}) => ({
-                header: () => <Header left={'left'} />
+                header: () => <Header left={'left'} />,
             })}
         >
             <ModalStack.Screen name="Index" component={Index} options={() => ({ headerShown: false })} />

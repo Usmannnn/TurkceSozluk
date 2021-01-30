@@ -52,9 +52,6 @@ export default Index
 
 const styles = StyleSheet.create({
     container: {
-        // height: height * 0.57,
-        marginHorizontal: 2,
-        marginVertical: 2,
         backgroundColor: '#FFFFFF',
     },
     head: {
@@ -64,7 +61,8 @@ const styles = StyleSheet.create({
     },
     tail: {
         height: height - height * 0.66,
-        paddingVertical: 30
+        paddingVertical: 30,
+        backgroundColor: 'yellow'
     },
     button: {
         marginHorizontal: 25,

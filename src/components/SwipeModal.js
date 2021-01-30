@@ -1,5 +1,7 @@
-import React from 'react'
-import { View, Modal, TouchableWithoutFeedback, Dimensions } from 'react-native'
+import React, { useEffect } from 'react'
+import { Dimensions, StyleSheet, Text, View } from 'react-native'
+
+import Modal from 'react-native-modal'
 import ModalStackContainer from '../navigations/ModalStack'
 
 const { width, height } = Dimensions.get('screen')
@@ -7,27 +9,33 @@ const { width, height } = Dimensions.get('screen')
 
 const SwipeModal = ({ isVisible, action }) => {
 
+
     return (
         <Modal
             animationType="slide"
-            transparent={true}
-            visible={isVisible}
-            style={{ justifyContent: 'flex-end' }}
+            style={styles.modalContainer}
+            swipeDirection={['down']}
+            onSwipeComplete={(e) => action(false)}
+            useNativeDriverForBackdrop
+            coverScreen={true}
             onRequestClose={() => action(false)}
+            isVisible={isVisible}
         >
-            <TouchableWithoutFeedback
-                onPress={() => action(false)}
-            >
-                <View style={{ height: height * 0.375, backgroundColor: 'black', opacity: isVisible ? 0.5 : 1 }} />
-            </TouchableWithoutFeedback>
-            <View 
-                style={{
-                    height: height - height * 0.375,
-                }}>
+            <View style={{ justifyContent: 'flex-end', flex: 1 }}>
                 <ModalStackContainer />
             </View>
         </Modal>
     )
 }
+
+
+const styles = StyleSheet.create({
+    modalContainer: {
+        marginTop: height - height * 0.6,
+        marginBottom: 0,
+        width: '98%',
+        alignSelf: 'center'
+    }
+})
 
 export default SwipeModal
