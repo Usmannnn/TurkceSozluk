@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import { useRoute } from '@react-navigation/native'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
 import Modal from 'react-native-modal'
@@ -8,7 +9,6 @@ const { width, height } = Dimensions.get('screen')
 
 
 const SwipeModal = ({ isVisible, action }) => {
-
 
     return (
         <Modal

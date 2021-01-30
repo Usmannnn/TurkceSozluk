@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, ImageBackground, Dimensions } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 import Logo from '../../components/Logo'
 import Grabber from '../../components/Grabber'
@@ -10,7 +10,7 @@ const { width, height } = Dimensions.get('screen')
 const Index = () => {
 
     const navigation = useNavigation()
-
+    
     return (
         <View style={styles.container}>
             <View style={styles.head}>

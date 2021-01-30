@@ -25,7 +25,7 @@ const TabContainer = () => {
 						return (
 							<View style={{ justifyContent: 'space-evenly', alignItems: 'center', width: 30, height: 30 }}>
 								<MaterialIcons name={'history'} size={size} color={color} />
-								<View style={{ backgroundColor: focused ? color : 'white', width: 5, height: 5, borderRadius: 3 }}></View>
+								<View style={{ backgroundColor: focused ? color : 'white', width: 5, height: 5, borderRadius: 3 }} />
 							</View>
 						)
 					} else if (route.name === 'Search') {
@@ -43,7 +43,7 @@ const TabContainer = () => {
 						return (
 							<View style={{ justifyContent: 'space-evenly', alignItems: 'center', width: 30, height: 30 }}>
 								<MaterialIcons name={'bookmark-outline'} size={size} color={color} />
-								<View style={{ backgroundColor: focused ? color : 'white', width: 5, height: 5, borderRadius: 3 }}></View>
+								<View style={{ backgroundColor: focused ? color : 'white', width: 5, height: 5, borderRadius: 3 }} />
 							</View>
 						)
 					}
