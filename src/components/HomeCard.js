@@ -12,7 +12,7 @@ const HomeCard = ({ title, word, description }) => {
     return (
         <TouchableOpacity 
             style={styles.container}
-            onPress={() => navigation.navigate('Detail')}
+            onPress={() => navigation.navigate('DetailStack')}
         >
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>{title}</Text>

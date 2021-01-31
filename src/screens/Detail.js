@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import IconResponse from '../components/IconResponse'
-import NavigationBar from '../components/NavigationBar'
 
 
 import SearchBar from '../components/SearchBar'
@@ -29,9 +28,6 @@ const Detail = () => {
             {
                 !isFocusBar ?
                     <>
-                        <View style={{ marginHorizontal: 20, marginTop: -20 }}>
-                            <NavigationBar />
-                        </View>
                         <WordDetail word={'Kalem'} origination={'Arapça kalem'} action={() => handleFavorite()} />
                         <IconResponse icon={'bookmark'} text={'Favorilerinize Eklendi'} action={status} />
                     </>

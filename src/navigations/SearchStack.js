@@ -1,10 +1,11 @@
 import React from 'react';
+import { View } from 'react-native';
+
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Header from '../components/Header';
 import Search from '../screens/Search';
-import Detail from '../screens/Detail';
-import { View } from 'react-native';
+import DetailStack from './DetailStack';
 
 const SearchStack = createStackNavigator();
 
@@ -25,7 +26,7 @@ const SearchStackContainer = () => {
             })}
         >
             <SearchStack.Screen name="Search" component={Search} options={() => ({ headerShown: false })} />
-            <SearchStack.Screen name="Detail" component={Detail} options={() => ({ headerTitle: 'Detaylar' })} />
+            <SearchStack.Screen name="DetailStack" component={DetailStack} options={({route}) => ({ headerTitle: route.name  })} />
         </SearchStack.Navigator>
     );
 };

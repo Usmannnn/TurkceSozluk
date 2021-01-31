@@ -4,7 +4,6 @@ import { FlatList } from 'react-native-gesture-handler';
 
 import { MaterialIcons } from 'react-native-vector-icons';
 import Header from '../components/Header';
-import NavigationBar from '../components/NavigationBar';
 import WordCard from '../components/WordCard';
 
 const History = () => {
@@ -82,7 +81,6 @@ const History = () => {
             <>
                 <View style={{margin: 20}}>
                     <Header size={25} left={'left'} title={'Favoriler'} right={'dots-three-horizontal'} />
-                    <NavigationBar />
                 </View>
                 <FlatList
                     data={data}
