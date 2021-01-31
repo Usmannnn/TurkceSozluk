@@ -10,6 +10,8 @@ import WordDetail from '../components/WordDetail'
 const Detail = () => {
 
     const [status, setStatus] = useState(false)
+    const [isFocusBar, setIsFocusBar] = useState(false)
+    const [searchedValue, setSearchedValue] = useState(null)
 
     const handleFavorite = () => {
         setStatus(!status)
@@ -17,12 +19,27 @@ const Detail = () => {
 
     return (
         <View style={styles.container}>
-            <SearchBar icon={'search'} placeholder={"Güncel Türkçe Sözlük'te Ara"} />
-            <View style={{ marginHorizontal: 20, marginTop: -20 }}>
-                <NavigationBar />
-            </View>            
-            <WordDetail word={'Kalem'} origination={'Arapça kalem'} action={() => handleFavorite()} />
-            <IconResponse icon={'bookmark'} text={'Favorilerinize Eklendi'} action={status} />
+            <SearchBar
+                icon={'search'}
+                placeholder={"Güncel Türkçe Sözlük'te Ara"}
+                onFocusBar={focus => setIsFocusBar(focus)}
+                onChangeValue={text => setSearchedValue(text)}
+                value={searchedValue}
+            />
+            {
+                !isFocusBar ?
+                    <>
+                        <View style={{ marginHorizontal: 20, marginTop: -20 }}>
+                            <NavigationBar />
+                        </View>
+                        <WordDetail word={'Kalem'} origination={'Arapça kalem'} action={() => handleFavorite()} />
+                        <IconResponse icon={'bookmark'} text={'Favorilerinize Eklendi'} action={status} />
+                    </>
+                    :
+                    <>
+                        <Text>when focus search bar from detail</Text>
+                    </>
+            }
         </View>
     )
 }

@@ -21,6 +21,7 @@ const SearchStackContainer = () => {
                         right={'dots-three-horizontal'}
                     />
                 </View>
+
             })}
         >
             <SearchStack.Screen name="Search" component={Search} options={() => ({ headerShown: false })} />

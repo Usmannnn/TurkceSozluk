@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { StyleSheet, Dimensions, View, ImageBackground, Animated, TouchableOpacity } from 'react-native'
+import { StyleSheet, Dimensions, View, Text, ImageBackground, Animated, TouchableOpacity, Image } from 'react-native'
 
 import Logo from '../components/Logo'
 import SearchBar from '../components/SearchBar'
@@ -8,6 +8,8 @@ import WordCard from '../components/WordCard'
 import SwipeModal from '../components/SwipeModal'
 
 import { Entypo } from 'react-native-vector-icons';
+import SpecialLetter from '../components/SpecialLetter'
+import { useNavigation } from '@react-navigation/native'
 
 const { width, height } = Dimensions.get('screen')
 
@@ -18,10 +20,14 @@ const Search = () => {
 
     const [isFocusBar, setIsFocusBar] = useState(false)
     const [isModalActive, setModalStatus] = useState(false)
+    const [searchedValue, setSearchedValue] = useState('')
+
     const barPosititon = useRef(new Animated.Value(nonFocusedHeight)).current;
 
-    useEffect(() => {
+    const navigation = useNavigation()
 
+    useEffect(() => {
+        setSearchedValue('')
         if (isFocusBar) {
             Animated.timing(barPosititon, {
                 toValue: onFocusedHeight,
@@ -46,7 +52,7 @@ const Search = () => {
         <View style={styles.container}>
             <Animated.View style={{
                 height: barPosititon,
-                backgroundColor: isFocusBar ? 'white' : '#E11E3C'
+                backgroundColor: isFocusBar ? '#F8F8F8' : '#E11E3C'
             }}>
                 {
                     !isFocusBar && <ImageBackground
@@ -67,13 +73,60 @@ const Search = () => {
                     </ImageBackground>
                 }
             </Animated.View>
-            <SearchBar icon={'search'} placeholder={"Türkçe Sözlük'te Ara"} onFocusBar={status => setIsFocusBar(status)} />
+            <SearchBar
+                icon={'search'}
+                placeholder={"Türkçe Sözlük'te Ara"}
+                onFocusBar={status => setIsFocusBar(status)}
+                onChangeValue={text => setSearchedValue(text)}
+                value={searchedValue}
+            />
             {
-                !isFocusBar ? <View style={styles.tail}>
-                    <HomeCard title={'Bir deyim'} word={'on para'} description={'çok az (para)'} />
-                    <HomeCard title={'Bir deyim'} word={'on para lorelajsflasjf'} description={'safssssssssssssssssssssssssssssssssssssssssssssssssssssss'} />
-                </View> : <WordCard text={'laşsfalisfşaif'} />
+                !isFocusBar ?
+                    <View style={styles.tail}>
+                        <HomeCard title={'Bir deyim'} word={'on para'} description={'çok az (para)'} />
+                        <HomeCard title={'Bir deyim'} word={'on para lorelajsflasjf'} description={'safssssssssssssssssssssssssssssssssssssssssssssssssssssss'} />
+                    </View> 
+                    
+                    :
+                    
+                    searchedValue === '' ?
+                        <View style={{ backgroundColor: '#EBEBEB', flex: 1 }}>
+                            <SpecialLetter />
+                            <View style={{ marginHorizontal: 25, marginBottom: 10 }}>
+                                <Text style={{ fontWeight: '600', lineHeight: 15, fontSize: 14, color: '#758291' }}>Son Aramalar</Text>
+                            </View>
+                            <WordCard text={'laşsfalisfşaif00000'} />
+                            <WordCard text={'laşsfalisfşaif00000'} />
+                            <WordCard text={'laşsfalisfşaif00000'} />
+                        </View> 
+                        
+                        :
+
+                        <View style={{ backgroundColor: '#EBEBEB', flex: 1 }}>
+                            <SpecialLetter />
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('Detail')}
+                            >
+                                <WordCard text={'laşsfalisfşaif00000'} icon={'right'} />
+                            </TouchableOpacity>
+                            <WordCard text={'laşsfalisfşaif00000'} icon={'right'} />
+                            <WordCard text={'laşsfalisfşaif00000'} icon={'right'} />
+                        </View>
+
             }
+
+
+
+            {/* 
+                text girilip klavyeden entera basılınca sonuç yok ise gösterilecek
+                <View style={{ backgroundColor: '#EBEBEB', flex: 1 }}>
+                    <SpecialLetter />
+                    <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                        <Image source={require('../../assets/icon-book.png')} style={{ width: 50, height: 50 }} />
+                        <Text style={{ color: '#48515B', fontWeight: '600', fontSize: 16, lineHeight: 20 }}>Aradığınız sözcük bulunamadı.</Text>
+                    </View>
+                </View> 
+            */}
             <SwipeModal isVisible={isModalActive} action={status => setModalStatus(status)} />
         </View>
     )

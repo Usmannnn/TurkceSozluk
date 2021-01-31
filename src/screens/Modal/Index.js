@@ -62,8 +62,7 @@ const styles = StyleSheet.create({
     tail: {
         height: height - height * 0.66,
         paddingVertical: 30,
-        backgroundColor: 'yellow'
-    },
+        },
     button: {
         marginHorizontal: 25,
         marginTop: 15,

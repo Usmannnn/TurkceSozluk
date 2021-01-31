@@ -9,9 +9,8 @@ const BeginBarWidth = width * 0.9
 const EndBarWidth = width * 0.7
 const CancelWidth = width * 0.2
 
-const SearchBar = ({ icon, placeholder, onFocusBar }) => {
+const SearchBar = ({ icon, placeholder, onFocusBar, onChangeValue, value }) => {
 
-    const [text, setText] = useState(null)
     const [cancel, setCancel] = useState(null)
 
     const barWidth = useRef(new Animated.Value(BeginBarWidth)).current;
@@ -44,7 +43,6 @@ const SearchBar = ({ icon, placeholder, onFocusBar }) => {
         }
     })
 
-
     const startFocus = () => {
         Animated.parallel([
             Animated.timing(barWidth, {
@@ -62,6 +60,7 @@ const SearchBar = ({ icon, placeholder, onFocusBar }) => {
 
     const stopFocus = () => {
         setCancel(null)
+        onChangeValue('')
         Keyboard.dismiss()
 
         Animated.parallel([
@@ -88,11 +87,12 @@ const SearchBar = ({ icon, placeholder, onFocusBar }) => {
                 </TouchableOpacity>
                 <View style={{ flex: 4 }}>
                     <TextInput
-                        value={text}
-                        onChangeText={value => setText(value)}
+                        value={value}
+                        onChangeText={value => onChangeValue(value)}
                         style={styles.input}
                         placeholder={placeholder}
                         onFocus={() => startFocus()}
+                        placeholderTextColor={'#758291'}
                     />
                 </View>
             </Animated.View>
@@ -143,7 +143,11 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         paddingVertical: 15,
-        color: '#758291',
+        color: '#0A151F',
+        fontWeight: '700',
+        fontSize: 16,
+        lineHeight: 16
+
     }
 })
 

@@ -37,7 +37,7 @@ const Suggestion = () => {
                 </View>
             </View>
             <View style={styles.tail}>
-                <Image source={require('../../../assets/icon-message.jpg')} style={{ width: 50, height: 50 }} />
+                <Image source={require('../../../assets/icon-message.png')} style={{ width: 50, height: 50 }} />
                 <Text style={{ textAlign: 'center', fontWeight: '500', fontSize: 16, lineHeight: 22, color: '#758291' }}>Katkı ve önerileriniz için bize e-posta gönderebilirsiniz.</Text>
                 <View>
                     <TouchableOpacity
