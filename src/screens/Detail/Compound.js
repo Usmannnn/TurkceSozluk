@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const One = () => {
+const Compound = () => {
     return (
         <View>
-            <Text>One</Text>
+            <Text>Compound</Text>
         </View>
     )
 }
 
-export default One
+export default Compound
 
 const styles = StyleSheet.create({})
