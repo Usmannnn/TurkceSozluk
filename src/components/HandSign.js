@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     languange: {
         backgroundColor: 'white',
         borderRadius: 999,
-        height: height * 0.075,
+        height: width * 0.13,
         width: width * 0.5,
         flexDirection: 'row',
         justifyContent: 'space-evenly',

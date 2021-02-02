@@ -6,7 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Header from '../components/Header';
 import Search from '../screens/Search';
 import DetailStack from './DetailStack';
-import DetailHeader from '../components/DetailHeader';
+import DetailHeader from '../components/Detail/DetailHeader';
+import DetailContent from '../components/Detail/DetailContent';
 
 const SearchStack = createStackNavigator();
 
@@ -22,14 +23,14 @@ const SearchStackContainer = () => {
                         title={route.name}
                         right={'dots-three-horizontal'}
                     />
-                </View>
+                </View>,
 
             })}
         >
             <SearchStack.Screen name="Search" component={Search} options={() => ({ headerShown: false })} />
             <SearchStack.Screen name="DetailStack" component={DetailStack} options={({route}) => ({ 
                 headerTitle: route.name,
-                header: () => <DetailHeader left={'left'} right={'dots-three-horizontal'} title={route.name} />
+                header: () => <DetailHeader left={'left'} right={'dots-three-horizontal'} title={route.name} />,
             })} />
         </SearchStack.Navigator>
     );

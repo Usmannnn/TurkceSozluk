@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View, Modal } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler';
 
 import { MaterialIcons } from 'react-native-vector-icons';
+
 import Header from '../components/Header';
 import WordCard from '../components/WordCard';
 

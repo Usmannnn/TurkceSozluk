@@ -3,12 +3,9 @@ import { Text, View } from 'react-native';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import Detail from '../screens/Detail';
 import Description from '../screens/Detail/Description';
 import Proverb from '../screens/Detail/Proverb';
 import Compound from '../screens/Detail/Compound';
-import XY from '../components/saf';
-import Try from '../components/Try';
 
 
 
@@ -53,8 +50,7 @@ const DetailStack = () => {
 
 		>
 			<Tab.Screen name="Description" component={Description} />
-			<Tab.Screen name="XY" component={XY} />
-			<Tab.Screen name="Proverb" component={Try} />
+			<Tab.Screen name="Proverb" component={Proverb} />
 			<Tab.Screen name="Compound" component={Compound} />
 		</Tab.Navigator>
 	);

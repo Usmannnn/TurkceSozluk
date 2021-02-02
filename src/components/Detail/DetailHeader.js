@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Dimensions, View } from 'react-native'
-import Header from './Header'
-import SearchBar from './SearchBar'
+import Header from '../Header'
+import SearchBar from '../SearchBar'
 
 const { height } = Dimensions.get('window')
 
