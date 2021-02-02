@@ -45,34 +45,50 @@ const Try = () => {
             author: '- Falih Rıfkı Atay'
         }
     ])
-    const [previous, setPrevios] = useState(0)    
+    const [previous, setPrevios] = useState(0)
     const animatedHeader = useRef(new Animated.Value(0)).current
     const animatedOpacity = useRef(new Animated.Value(1)).current
-    
+
 
     const headerHeight = animatedHeader.interpolate(
         {
             inputRange: [0, (HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT)],
             outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
             extrapolate: 'clamp'
-
         }
     )
 
-        useEffect(() => {
-            console.log(headerHeight)
-        }, [headerHeight])
+    const handleScroll = (e) => {
+
+        // must be find another solution
+        setPrevios(e)
+        if(previous < e) {
+            console.log('up')
+            Animated.timing(animatedOpacity, {
+                toValue: 0,
+                duration: 100,
+                useNativeDriver: true
+            }).start()
+        } else {
+            Animated.timing(animatedOpacity, {
+                toValue: 1,
+                duration: 100,
+                useNativeDriver: true
+            }).start()
+        }       
+    }
 
     return (
         <View style={styles.container}>
 
-            <Animated.View style={{ height: headerHeight, backgroundColor: 'red' }}>
+            <Animated.View style={{ height: headerHeight}}>
                 <View>
                     <Text style={{ fontWeight: '700', fontSize: 32, lineHeight: 40 }}>Kalem</Text>
                     <Text style={{ fontWeight: '500', fontSize: 14, lineHeight: 36, fontStyle: 'italic' }}>Kalen Kalelahf</Text>
                 </View>
                 <Animated.View style={[styles.actionContainer, {
-                    opacity: animatedOpacity
+                    opacity: animatedOpacity,
+                    zIndex: -1
                 }]}>
                     <View style={styles.iconContainer}>
                         <Volume />
@@ -83,15 +99,17 @@ const Try = () => {
             </Animated.View>
 
             <ScrollView
+                showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingTop: 20 }}
                 scrollEventThrottle={16}
                 onScroll={Animated.event(
                     [{ nativeEvent: { contentOffset: { y: animatedHeader } } }],
-                    {
+                    { 
                         useNativeDriver: false,
+                        listener: (e) => handleScroll(e.nativeEvent.contentOffset.y)
                     }
                 )}
-
+                    style={{zIndex: 2}}
             >
 
                 {data.map((item, index) => {
