@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     contentContainer: {
         marginHorizontal: -20,
         paddingHorizontal: 20,
+        zIndex: 4
     },
     iconContainer: {
         flexDirection: 'row',

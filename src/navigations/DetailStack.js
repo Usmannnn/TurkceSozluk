@@ -8,7 +8,6 @@ import Proverb from '../screens/Detail/Proverb';
 import Compound from '../screens/Detail/Compound';
 
 
-
 const Tab = createMaterialTopTabNavigator();
 
 const DetailStack = () => {
@@ -20,13 +19,13 @@ const DetailStack = () => {
 			screenOptions={({ route }) => ({
 
 				tabBarLabel: ({ focused }) => {
-
+					// reduxa geçince background rengi globalleştirilecek
 					return (
 						<View style={{ alignItems: 'center', width: '100%', height: '100%', marginVertical: 10 }}>
 							<Text style={{ textAlign: 'center', fontWeight: '700', fontSize: 12.5, color: focused ? '#183148' : '#758291' }}>
-								{route.name === 'Description' ? 'Açıklama' : route.name === 'Proverb' ? 'Atasözleri ve Deyimler' : 'Brirleşik Kelimeler'}
+								{route.name === 'Description' ? 'Açıklama' : route.name === 'Proverb' ? 'Atasözleri' : 'Brirleşik Kelimeler'}
 							</Text>
-							{/* <View style={{ marginTop: 10, backgroundColor: focused ? '#E11E3C' : '#EBEBEB', width: 40, height: 2, borderRadius: 3 }} /> */}
+							<View style={{ marginTop: 10, backgroundColor: focused ? '#E11E3C' : '#F1F1F1', width: 40, height: 2, borderRadius: 3 }} />
 						</View>
 					)
 
@@ -40,7 +39,7 @@ const DetailStack = () => {
 				keyboardHidesTabBar: true,
 				showLabel: true,
 				tabStyle: {
-					// backgroundColor: '#EBEBEB',
+					backgroundColor: '#F1F1F1',
 				},
 				style: {
 					height: 50,

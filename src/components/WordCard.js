@@ -6,23 +6,31 @@ import { AntDesign } from 'react-native-vector-icons';
 
 const { width, height } = Dimensions.get('screen')
 
-const WordCard = ({ text, borderColor, icon }) => {
+const WordCard = ({ text }) => {
 
+    const [border, setBorder] = useState(false)
+
+
+    const handlePress = () => {
+        setBorder(!border)
+        //asağıdan modal açılacak
+    }
+    
     return (
-        <View
+        <TouchableOpacity
             style={[styles.container, {
                 borderWidth: 1,
-                borderColor: borderColor ? 'red' : 'transparent'
+                borderColor: border ? 'red' : 'transparent'
             }]}
-
+            onLongPress={() => handlePress()}
         >
             <View style={{ flex: 4 }}>
                 <Text style={{ fontWeight: '700', fontSize: 16, lineHeight: 26, marginRight: 10 }}>{text}</Text>
             </View>
             <View style={{ flex: 1, alignItems: 'flex-end' }}>
-                <AntDesign name={icon} size={20} color={'#E11E3C'} />
+                <AntDesign name={border ? 'checkcircle' : 'right'} size={20} color={'#E11E3C'} />
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler';
 
 import { MaterialIcons } from 'react-native-vector-icons';
+import EmptyScreen from '../components/EmptyScreen';
 
 import Header from '../components/Header';
 import WordCard from '../components/WordCard';
@@ -49,30 +50,25 @@ const History = () => {
 
     //data redux tan gelince tıklanan item datanın içindeki rengi değiştirecek
     const onLongPress = () => {
-            // setBorderColor(!borderColor)
-            // setIcon(!icon)
+        // setBorderColor(!borderColor)
+        // setIcon(!icon)
     }
 
     const emptyScreen = () => {
         return (
-            <>
-                <View style={{margin: 20}}>
-                    <Header size={25} left={'left'} title={'Favoriler'} right={'dots-three-horizontal'} />
-                </View>
-                <View style={{ ...StyleSheet.absoluteFill, justifyContent: 'center', alignItems: 'center' }}>
-                    <MaterialIcons name={'bookmark-outline'} size={50} color={'#758291'} />
-                    <Text style={{ marginTop: 15, fontWeight: '600', fontSize: 18, lineHeight: 20, color: '#758291' }}>Henüz geçmiş yok</Text>
-                </View>
-            </>
+                // <View style={{margin: 20}}>
+                //     <Header size={25} left={'left'} title={'Favoriler'} right={'dots-three-horizontal'} />
+                // </View>
+                <EmptyScreen icon={'bookmark-outline'} message={'Henüz favori yok.'} />
         )
     }
 
-    const renderCard = ({item, index}) => {
+    const renderCard = ({ item, index }) => {
         return (
             <TouchableOpacity key={index}
                 onPress={() => onLongPress()}
             >
-                 <WordCard text={item.text} borderColor={borderColor} icon={icon} />
+                <WordCard text={item.text} borderColor={borderColor} icon={icon} />
             </TouchableOpacity>
         )
     }
@@ -80,7 +76,7 @@ const History = () => {
     const historyItem = () => {
         return (
             <>
-                <View style={{margin: 20}}>
+                <View style={{ margin: 20 }}>
                     <Header size={25} left={'left'} title={'Favoriler'} right={'dots-three-horizontal'} />
                 </View>
                 <FlatList
@@ -95,7 +91,7 @@ const History = () => {
     }
 
     return (
-        data.length == 0 ? emptyScreen() : historyItem()
+        data.length !== 0 ? emptyScreen() : historyItem()
     )
 }
 

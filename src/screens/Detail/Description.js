@@ -4,11 +4,6 @@ import { Text, View, StyleSheet, Platform, Animated, ScrollView, Dimensions } fr
 
 import DetailContent from '../../components/Detail/DetailContent';
 
-import Favorite from '../../components/Favorite';
-import HandSign from '../../components/HandSign';
-import Volume from '../../components/Volume';
-
-
 const { width, height } = Dimensions.get('window')
 
 const HEADER_MIN_HEIGHT = height * 0.1;
@@ -50,6 +45,7 @@ const Description = () => {
     ])
     const [previous, setPrevios] = useState(0)
 
+    // hesaplamalar ve değerler localize olmalı
     const animatedHeader = useRef(new Animated.Value(0)).current
     const animatedOpacity = useRef(new Animated.Value(1)).current
 
@@ -64,10 +60,10 @@ const Description = () => {
     const backgroundColor = animatedHeader.interpolate(
         {
             inputRange: [0, HEADER_MAX_HEIGHT / 2, HEADER_MAX_HEIGHT],
-            outputRange: ['#F8F8F8', 'whitesmoke', 'white']
+            outputRange: ['#f1f1f1', '#f8f8f8', '#ffffff']
         }
     )
-
+    //
     const handleScroll = (e) => {
 
         // must be find better solution
@@ -127,7 +123,6 @@ const Description = () => {
                         </View>
                     )
                 })}
-
             </ScrollView>
         </View>
     )
@@ -154,7 +149,8 @@ const styles = StyleSheet.create(
         },
         tailContainer: {
             backgroundColor: 'white',
-            borderRadius: 20,
+            borderTopLeftRadius: 20,
+            borderTopRightRadius: 20,
             marginTop: 15,
             paddingHorizontal: 15,
             paddingVertical: 10
