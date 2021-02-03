@@ -21,7 +21,7 @@ const SwipeModal = ({ isVisible, action }) => {
             onRequestClose={() => action(false)}
             isVisible={isVisible}
         >
-            <View style={{ justifyContent: 'flex-end', flex: 1 }}>
+            <View style={{ justifyContent: 'flex-end', ...StyleSheet.absoluteFill}}>
                 <ModalStackContainer />
             </View>
         </Modal>

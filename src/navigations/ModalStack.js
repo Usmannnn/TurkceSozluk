@@ -6,6 +6,7 @@ import Index from '../screens/Modal/Index';
 import AboutUs from '../screens/Modal/AboutUs';
 import ModalTab from './ModalTabs';
 
+
 const ModalStack = createStackNavigator();
 
 const ModalStackContainer = () => {

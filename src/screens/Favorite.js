@@ -8,7 +8,7 @@ import EmptyScreen from '../components/EmptyScreen';
 import Header from '../components/Header';
 import WordCard from '../components/WordCard';
 
-const History = () => {
+const Favorite = () => {
 
     const [data, setData] = useState([
         {
@@ -43,55 +43,40 @@ const History = () => {
             id: 7,
             text: 'Lorem ipsum dolor sit amet',
         },
+        {
+            id: 7,
+            text: 'Lorem ipsum dolor sit amet',
+        },
+        {
+            id: 7,
+            text: 'Lorem ipsum dolor sit amet',
+        },
+        {
+            id: 7,
+            text: 'Lorem ipsum dolor sit amet',
+        },
     ])
 
-    const [borderColor, setBorderColor] = useState(false)
-    const [icon, setIcon] = useState('right')
-
-    //data redux tan gelince tıklanan item datanın içindeki rengi değiştirecek
-    const onLongPress = () => {
-        // setBorderColor(!borderColor)
-        // setIcon(!icon)
-    }
-
-    const emptyScreen = () => {
-        return (
-                // <View style={{margin: 20}}>
-                //     <Header size={25} left={'left'} title={'Favoriler'} right={'dots-three-horizontal'} />
-                // </View>
-                <EmptyScreen icon={'bookmark-outline'} message={'Henüz favori yok.'} />
-        )
-    }
-
-    const renderCard = ({ item, index }) => {
-        return (
-            <TouchableOpacity key={index}
-                onPress={() => onLongPress()}
-            >
-                <WordCard text={item.text} borderColor={borderColor} icon={icon} />
-            </TouchableOpacity>
-        )
-    }
-
-    const historyItem = () => {
-        return (
-            <>
-                <View style={{ margin: 20 }}>
-                    <Header size={25} left={'left'} title={'Favoriler'} right={'dots-three-horizontal'} />
-                </View>
-                <FlatList
-                    data={data}
-                    renderItem={renderCard}
-                    style={styles.contentContainer}
-                    keyExtractor={(item, index) => index.toString()}
-                    showsVerticalScrollIndicator={false}
-                />
-            </>
-        )
-    }
-
     return (
-        data.length !== 0 ? emptyScreen() : historyItem()
+        <View style={styles.contentContainer}>
+            <View style={{ margin: 20 }}>
+                <Header size={25} left={'left'} title={'Favoriler'} right={'dots-three-horizontal'} />
+            </View>
+            {
+                data.length == 0 ?
+                    <EmptyScreen icon={'bookmark-outline'} message={'Henüz favori yok.'} />
+                    :
+                    <FlatList
+                        data={data}
+                        renderItem={({item, index}) =>  <WordCard text={item.text} />}
+                        style={styles.contentContainer}
+                        keyExtractor={(item, index) => index.toString()}
+                        showsVerticalScrollIndicator={false}
+                    />
+            }
+        </View>
+
+
     )
 }
 
@@ -102,4 +87,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default History
+export default Favorite
